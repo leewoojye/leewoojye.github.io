@@ -4,14 +4,12 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+야생미 넘치는 개발동물원 WooZoo에 오신걸 환영합니다.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+운영자 정보:
+동국대학교 컴퓨터공학전공(광고홍보학부전공) 20학번 이우제
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+개인 블로그:
+[naverblog](https://blog.naver.com/eyzoovveel)
 
-[jekyll-organization]: https://github.com/jekyll
+<!-- [jekyll-organization]: https://github.com/jekyll -->
