@@ -158,6 +158,3 @@ public class David extends Parents implements Programer, Driver{
 ```
 
 👆 부모 클래스로부터 상속받고 & 인터페이스도 구현한 클래스
-
-<br>
-</br>
