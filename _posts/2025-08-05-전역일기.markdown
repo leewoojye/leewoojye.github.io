@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "전역 후 2주"
+title: "전역일기 轉役日記"
 date: 2025-08-04 23:34:27
 comments: true
-categories: dev
+categories: diary
 ---  
 
 <!-- ![1](/assets/images/IMG_3802.PNG) -->

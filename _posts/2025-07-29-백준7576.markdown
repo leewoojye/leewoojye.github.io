@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "토마토 문제 (백준 7576) - 기존 bfs 변형하기"
+title: "tomato (백준 7576) 🍅 solution 🍅"
 date: 2025-07-29 02:05:46
 comments: true
 categories: dev
