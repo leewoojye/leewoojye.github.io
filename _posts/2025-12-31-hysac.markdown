@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Hyperbolic Safety-Aware Vision-Language Models"
+date:   2025-12-31 17:03:24 +0900
+comments: true
+categories: research
+---
+
+structing knowledge with a safety hierarchy
+- general / safe concepts
+- specific / unsafe concepts
+
+why Hyperbolic space?
+- 유클리드 공간은 깊은 계층관계 표현에 어려움, high distortion
+- 하이퍼볼릭 공간은 원점에 거리에 지수적으로 비례해 규모가 증가함, low distortion
+
+hysac : hyperbolic safety-aware CLIP
+- safe text < safe image < unsafe text < unsafe image
+
+hyperbolic safety-aware contrastive loss을 통해 contrastive learning
+
+hyperbolic entailment cones for hierarchical safety
+
+visual proof : a perfectly structed embedding space
+
+classification and robustness results
+
+navigating space : dynamic safety traversals
