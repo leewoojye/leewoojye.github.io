@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "뒤죽박죽 용어사지전"
+date:   2025-12-31 13:15:50 +0900
+comments: true
+categories: dev
+---
+
+fine-grained 과 coarse-grained
+fine-grained classification은 비슷비슷한 클래스들 사이의 미세한 차이를 구분하는 분류다. 예를 들어 개(dog)처럼 큰 범주가 아닌 개 품종처럼 더 세분화된 라벨을 맞히는 작업이 있다.
+반대말은 coarse-grained로, 큰 덩어리(거친 단위)로 뭉쳐 다룬다는 의미로 쓰인다.
