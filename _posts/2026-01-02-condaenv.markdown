@@ -33,14 +33,37 @@ dependencies:
     - transformers
 ```
 
+네! 바로 그렇습니다. 가상환경에 필요한 패키지 리스트를 포함한 가상환경의 메타데이터가 yml 파일에 적게 됩니다. conda에 없는 패키지는 pip: 을 통해 pip으로 설치해야 할 패키지를 명시할 수 있습니다.
+
 ![alt text](/assets/images/KakaoTalk_Photo_2026-01-03-00-44-11.png)
 
+위 사진은 제가 가상환경을 위한 yml 파일을 작성하다 오류를 일으킨 부분입니다. 사실 torch 패키지가 flash-attn보다 하위에 위치해 있었는데, flash-attn이 torch 패키지에 의존성을 갖기 때문에 torch는 flash-attn보다 먼저 설치되어야 하고, 따라서 위치상 더 위에 위치해야 합니다. 패키지 리스트를 작성할 때 패키지 간 의존성도 고려해야 한다는 사실!
+
+이제 가상환경을 생성했으니 가상환경을 활성화 시켜보겠습니다.
+
 ```
-conda activate qwen
+conda activate myenv
 ```
 
+conda activate 키워드로 myenv 가상환경에 들어왔습니다. which python3를 터미널에 입력하여 현재 사용 중인 파이썬 인터프리터가 myenv의 파이썬임을 확인해볼 수도 있습니다.
+
+```
+conda deactivate # 가상환경 비활성화
+conda env list # conda로 등록된 가상환경 리스트업
+conda remove -n 환경이름 --all # 가상환경 삭제
+```
+기타 유용한 가상환경 관련 명령어입니다. 
+
+근데 간혹 yml 파일따라 가상환경을 설치하면 일부 패키지만 설치되고 중간에 오류를 뱉으며 끝내 일부 패키지들은 설치되지 않는 경우가 있습니다. 이럴때 현재 환경이 environment.yml 과 얼마나 다른지 알면 좋겠죠? 우선 현재 환경에 대한 정보를 담은 current_env.yml 파일을 생성합니다.
+```
 conda env export > current_env.yml
+```
 
-diff -u environment_new.yml current_env.yml
+그리고 diff 명령어를 사용하면 두 yml 파일 사이를 비교한 결과를 터미널창에서 확인할 수 있습니다. git diff 키워드처럼 current_env.yml 파일에 있으면 prefix +, 없으면 prefix -로 표시해줍니다.
 
-conda env update --file environment_new.yml --prune
+여기서 prefix -가 많다면 가상환경 세팅이 덜 되었다는 의미이므로 conda env update로 current_env.yml을 environment.yml에 맞추게 할 수 있습니다. 하지만 대게 conda env update로 해결이 되지 않아 에러가 발생했을 것이기에, 문제를 해결하고(위에서 예시를 들었던 pip 의존성 문제) conda env update를 실행하면 됩니다.
+
+```
+diff -u environment.yml current_env.yml
+conda env update --file environment.yml --prune
+```
