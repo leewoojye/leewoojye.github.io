@@ -17,7 +17,7 @@ why Hyperbolic space?
 hysac : hyperbolic safety-aware CLIP
 - safe text < safe image < unsafe text < unsafe image
 
-hyperbolic safety-aware contrastive loss을 통해 contrastive learning
+hyperbolic safety-aware contrastive loss을 통해 contrastive learning, contrastive loss와 entailment loss
 
 hyperbolic entailment cones for hierarchical safety
 

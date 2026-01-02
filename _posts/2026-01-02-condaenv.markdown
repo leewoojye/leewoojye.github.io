@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "conda로 가상환경 만들기"
+date:   2026-01-02 17:33:29 +0900
+comments: true
+categories: dev
+---
+
+![alt text](image.png)
+
+최근에 부쩍 오픈소스로 테스트할일이 생겨 'git clone + conda 가상환경 세팅' 세트메뉴로 배를 채우고 있습니다. 프로젝트마다 요구하는 패키지들도 너무 다르고 패키지 관리를 보다 수월하게 하고 싶을 때 우린 패키지 관리 도구를 사용합니다. 패키지를 관리하는 가장 쉬운 방법 중 하나는 각 프로젝트마다 특화된 환경, 즉 가상환경을 만드는 것이죠. 
+
+예전에 가상환경을 관리할 땐 파이썬 표준 패키지인 venv를 사용하곤 했는데 최근 것허브 설치 가이드라인들은 거의 다 conda를 이용한 패키지 관리를 권유하는 것 같습니다.
+
+conda로 먼저 myenv라는 이름의 가상환경을 만들어봅시다. 대게 다음 두 가지 옵션 중 하나를 사용하게 됩니다.
+```
+conda create -n 환경이름 python=3.10
+conda env create -f environment.yml
+```
+첫 줄은 파이썬 버전을 명시하며 가상환경을 만드는 방법입니다. 여기서 -n은 가상환경 이름을 지정하는 옵션입니다. 
+
+여기서 두 번째 형태를 더 자주 사용하게 될 수도 있습니다. 바로 가상환경에 필요한 패키지들을 정리한 yml 파일을 지정하여 생성하는 방법입니다. 이전 방법과 달리 가상환경명 myenv가 보이지 않네요..? yml 파일을 더 자세히 들여다보겠습니다.
+```
+name: myenv          # 생성될 환경의 이름
+channels:
+  - defaults                  # 패키지를 다운로드할 경로
+dependencies:
+  - python=3.9                # 파이썬 버전
+  - numpy
+  - pandas
+  - scikit-learn
+  - pip:                      # conda에 없는 건 pip로 설치 가능
+    - transformers
+```
+
+![alt text](/assets/images/KakaoTalk_Photo_2026-01-03-00-44-11.png)
+
+```
+conda activate qwen
+```
+
+conda env export > current_env.yml
+
+diff -u environment_new.yml current_env.yml
+
+conda env update --file environment_new.yml --prune
