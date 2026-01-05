@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Universal Domain Adaptation - Related Works"
+date:   2026-01-05 17:03:57 +0900
+comments: true
+categories: research
+---
+
+With the recent progress of VLMs, there has been growing
+recognition of the relatively limited exploration compared to
+pretrained backbones on ImageNet
+
+backbone이라는 말의 의미
+백본은 입력 이미지에서 high-level feature를 뽑아주는 핵심 피처 추출기(예: ResNet, ViT)를 말합니다.
+그 위에 얇은 헤드(Linear classifier, MLP, decoder 등)만 새로 얹어서 분류·세그멘테이션·도메인 적응 같은 다운스트림 작업을 합니다.
+
+“CLIP을 backbone으로 쓴다”의 구체적인 의미
+CLIP은 이미지 인코더(ResNet/ViT)와 텍스트 인코더가 같이 있는 VLM인데, 여기서 이미지 인코더 부분을 일반 CNN 백본처럼 가져다가 feature extractor로 쓰는 것을 말합니다.

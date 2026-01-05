@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "[article review] Zero-shot Image Classification with OpenAI's CLIP"
+date:   2026-01-05 17:50:46 +0900
+comments: true
+categories: research
+---
+https://www.pinecone.io/learn/series/image-search/zero-shot-image-classification-clip/
+
+Both CLIP models are optimized during pretraining to align similar text and images in vector space. It does this by taking image-text pairs and pushing their output vectors nearer in vector space while separating the vectors of non-pairs.
+
+There are three primary benefits here:
+
+CLIP requires just image-text pairs rather than specific class labels thanks to the contrastive rather than classification focused training function. This type of data is abundant in today’s social-media-centric world.
+The large dataset size means CLIP can build a strong understanding of general textual concepts displayed within images.
+Text descriptors often describe various features of an image, not just one. Meaning a more holistic representation of images (and text) can be built.
+
+ResNet과 비교한 CLIP의 장점
+
+When applying a ResNet model to other domains, a standard approach is to use a “linear probe”. 
+
+여기서 linear probe란? linear probe는 사전학습된 표현은 그대로 고정해 두고, 그 위에 선형 분류기만 얹어서 학습하는 평가·전이 방식이다. 백본(예: ResNet, ViT 등)의 feature extractor는 freeze하고, 마지막 feature 벡터를 받아서 하나의 선형층(fully-connected layer, softmax 포함)을 학습한다. 새 도메인/데이터셋에 대해 이 선형층만 supervised로 학습시키므로, 백본 표현의 “선형 분리 가능성(linearly separable한지)”을 측정하는 probe 용도로 자주 쓰인다. 즉 linear probe는 새 태스크용 라벨된 샘플을 여러 개 사용하여 선형 분류기의 파라미터를 실제로 업데이트하므로 few~many-shot 학습에 해당한다.
+
+이에 반해 CLIP은 추가로 데이터 학습이 필요하지 않으므로 zero-shot의 이점을 갖는다.
