@@ -13,3 +13,7 @@ nohup sh -c 'PYTHONUNBUFFERED=1 NCCL_P2P_DISABLE=1 sh scripts/finetune_chartgemm
 scp 로컬디렉토리주소 사용자명@서버IP주소:원격디렉토리주소
 
 ssh -p 9404 사용자명@서버IP주소
+
+pip install git+https://github.com/mattloper/chumpy --no-build-isolation
+
+![alt text](image-1.png)

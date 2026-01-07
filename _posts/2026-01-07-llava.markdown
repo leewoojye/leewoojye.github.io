@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "LLaVA (Large Language-and-Vision Assistant)"
+date:   2026-01-07 22:18:25 +0900
+comments: true
+categories: research
+---
+
+LLaVA (Large Language-and-Vision Assistant)**는 시각 인코더(Vision Encoder)와 대규모 언어 모델(LLM)을 연결하여 시각적 정보를 이해하고 이에 대한 질의응답을 수행할 수 있도록 설계된 멀티모달 모델(LMM, Large Multimodal Model)이다.
+
+모델 아키텍처
+- Vision Encoder
+- Backbone LLM
+- Connector (Projection Layer) : Linear Projection (이후 버전에서는 MLP)을 사용하여 시각적 특징을 LLM의 워드 임베딩 공간(Word Embedding Space)에 매핑
+
+학습 방법론: Visual Instruction Tuning
+- 단순히 이미지-텍스트 쌍(Image-Text Pair)을 학습하는 것을 넘어, 언어 모델이 시각적 정보를 바탕으로 사용자의 지시(Instruction)를 따르도록 학습
+- 
