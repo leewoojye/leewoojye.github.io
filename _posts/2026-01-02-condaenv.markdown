@@ -13,14 +13,14 @@ categories: dev
 예전에 가상환경을 관리할 땐 파이썬 표준 패키지인 venv를 사용하곤 했는데 최근 것허브 설치 가이드라인들은 거의 다 conda를 이용한 패키지 관리를 권유하는 것 같습니다.
 
 conda로 먼저 myenv라는 이름의 가상환경을 만들어봅시다. 대게 다음 두 가지 옵션 중 하나를 사용하게 됩니다.
-```
+``` bash
 conda create -n 환경이름 python=3.10
 conda env create -f environment.yml
 ```
 첫 줄은 파이썬 버전을 명시하며 가상환경을 만드는 방법입니다. 여기서 -n은 가상환경 이름을 지정하는 옵션입니다. 
 
 여기서 두 번째 형태를 더 자주 사용하게 될 수도 있습니다. 바로 가상환경에 필요한 패키지들을 정리한 yml 파일을 지정하여 생성하는 방법입니다. 이전 방법과 달리 가상환경명 myenv가 보이지 않네요..? yml 파일을 더 자세히 들여다보겠습니다.
-```
+``` yml
 name: myenv          # 생성될 환경의 이름
 channels:
   - defaults                  # 패키지를 다운로드할 경로
@@ -41,13 +41,13 @@ dependencies:
 
 이제 가상환경을 생성했으니 가상환경을 활성화 시켜보겠습니다.
 
-```
+``` bash
 conda activate myenv
 ```
 
 conda activate 키워드로 myenv 가상환경에 들어왔습니다. which python3를 터미널에 입력하여 현재 사용 중인 파이썬 인터프리터가 myenv의 파이썬임을 확인해볼 수도 있습니다.
 
-```
+``` bash
 conda deactivate # 가상환경 비활성화
 conda env list # conda로 등록된 가상환경 리스트업
 conda remove -n 환경이름 --all # 가상환경 삭제
@@ -55,7 +55,7 @@ conda remove -n 환경이름 --all # 가상환경 삭제
 기타 유용한 가상환경 관련 명령어입니다. 
 
 근데 간혹 yml 파일따라 가상환경을 설치하면 일부 패키지만 설치되고 중간에 오류를 뱉으며 끝내 일부 패키지들은 설치되지 않는 경우가 있습니다. 이럴때 현재 환경이 environment.yml 과 얼마나 다른지 알면 좋겠죠? 우선 현재 환경에 대한 정보를 담은 current_env.yml 파일을 생성합니다.
-```
+``` bash
 conda env export > current_env.yml
 ```
 
@@ -63,7 +63,7 @@ conda env export > current_env.yml
 
 여기서 prefix -가 많다면 가상환경 세팅이 덜 되었다는 의미이므로 conda env update로 current_env.yml을 environment.yml에 맞추게 할 수 있습니다. 하지만 대게 conda env update로 해결이 되지 않아 에러가 발생했을 것이기에, 문제를 해결하고(위에서 예시를 들었던 pip 의존성 문제) conda env update를 실행하면 됩니다.
 
-```
+``` bash
 diff -u environment.yml current_env.yml
 conda env update --file environment.yml --prune
 ```
