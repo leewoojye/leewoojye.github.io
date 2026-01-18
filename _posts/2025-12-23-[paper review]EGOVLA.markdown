@@ -24,6 +24,10 @@ EgoVLA의 ego는 데이터셋의 Egocentric한 특징에서 유래했습니다. 
 
 ![alt text](/assets/images/image1.png)
 
+먼저 전체 EgoVLA 파이프라인에 대한 한 줄 요약!
+```
+VILA는 NVIDIA에서 만든 범용 비전-언어 모델인데, 이 VILA 계열 모델(NVILA-2B)을 backbone VLM으로 써서 그 위에 action head만 얹어 VLA로 확장한 것
+```
 3장에서는 EgoVLA의 자세한 구조를 이야기합니다. Fig2의 EgoVLA는 크게 두 부품으로 구성되는데, 우선 Pre-trained VLM은 vision, language, action 세 모달리티에 대응하는 정보들을 입력으로 받습니다. 입력은 어떤 내용을 담아야 할까요?
 
 우리 EgoVLA 모델은 자연어의 명령문을 듣고 이를 수행하기 위한 동작을 취하고 싶습니다. 그러기 위해선 "커피 캡슐을 내려놓아"라는 language instruction과 커피캡슐 위치를 파악할 수 있는 visual observation이 필요합니다.
