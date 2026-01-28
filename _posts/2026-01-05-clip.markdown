@@ -22,3 +22,21 @@ When applying a ResNet model to other domains, a standard approach is to use a �
 여기서 linear probe란? linear probe는 사전학습된 표현은 그대로 고정해 두고, 그 위에 선형 분류기만 얹어서 학습하는 평가·전이 방식이다. 백본(예: ResNet, ViT 등)의 feature extractor는 freeze하고, 마지막 feature 벡터를 받아서 하나의 선형층(fully-connected layer, softmax 포함)을 학습한다. 새 도메인/데이터셋에 대해 이 선형층만 supervised로 학습시키므로, 백본 표현의 “선형 분리 가능성(linearly separable한지)”을 측정하는 probe 용도로 자주 쓰인다. 즉 linear probe는 새 태스크용 라벨된 샘플을 여러 개 사용하여 선형 분류기의 파라미터를 실제로 업데이트하므로 few~many-shot 학습에 해당한다.
 
 이에 반해 CLIP은 추가로 데이터 학습이 필요하지 않으므로 zero-shot의 이점을 갖는다.
+
+![alt text](image-17.png)
+
+### CLIP 동작 과정 
+- 텍스트 인코더는 주어진 텍스트를 쪼개 토큰들을 만들고 토큰끼리 셀프 어텐션을 거친다. 셀프 어텐션은 “이 패치가 어떤 다른 패치들과 같이 등장하는지, 전체 컨텍스트에서 어떤 역할인지”를 학습하게 하며, 이 global 문맥 정보는 토큰 임베딩에 삽입된다.
+- 비전 인코더도 한 장의 이미지를 여러 패치 토큰들로 나눈 뒤 패치 토큰끼리 셀프 어텐션을 거친다. 
+- 이미지 패치 토큰과 텍스트 토큰 간의 유사도 행렬(Cross-Modal Similarity)을 구한다.
+
+참고로 일반적인 CLIP은 이미지 한 장과 문장 전체를 하나의 벡터로 만들어 비교하지만, 사진 속 DHN-NCE은 토큰 단위로 비교하는 local-to-local alignment 방식을 쓴다.
+
+![alt text](image-18.png)
+
+더 나아가 MedCLIP-SAM은 CLIP으로 구한 토큰 간 유사도 행렬을 M2I에 넘겨 saliency map을 생성한다.
+
+### self-attention의 활용
+CLIP 모델은 텍스트와 비교하기 위해 이미지 전체를 대표하는 하나의 벡터가 필요하다. 이때 셀프어텐션 정보가 결정적으로 사용되는데
+- CLS 토큰: 입력 시 추가된 CLS 토큰은 셀프어텐션 과정을 통해 모든 패치 토큰으로부터 중요한 정보를 집약한다. 최종 레이어의 CLS 토큰은 모든 패치의 어텐션 가중치가 반영된 '정보의 요약본'인 셈이다.
+- Attention Pooling: 단순히 평균을 내는 대신, 어텐션 메커니즘을 한 번 더 사용하여 중요한 패치에 더 높은 가중치를 주어 최종 임베딩을 생성한다.
