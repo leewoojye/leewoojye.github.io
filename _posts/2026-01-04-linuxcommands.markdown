@@ -16,7 +16,7 @@ ssh -p 9404 사용자명@서버IP주소
 
 pip install git+https://github.com/mattloper/chumpy --no-build-isolation
 
-![alt text](image-1.png)
+![alt text](/assets/images/image-1.png)
 
 Kaggle API를 사용하여 특정 파일만 받기
 

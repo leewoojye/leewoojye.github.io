@@ -6,7 +6,7 @@ comments: true
 categories: dev
 ---
 
-![alt text](image.png)
+![alt text](/assets/images/image.png)
 
 최근에 부쩍 오픈소스로 테스트할일이 생겨 'git clone + conda 가상환경 세팅' 세트메뉴로 배를 채우고 있습니다. 프로젝트마다 요구하는 패키지들도 너무 다르고 패키지 관리를 보다 수월하게 하고 싶을 때 우린 패키지 관리 도구를 사용합니다. 패키지를 관리하는 가장 쉬운 방법 중 하나는 각 프로젝트마다 특화된 환경, 즉 가상환경을 만드는 것이죠. 
 

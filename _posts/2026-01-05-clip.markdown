@@ -23,7 +23,7 @@ When applying a ResNet model to other domains, a standard approach is to use a �
 
 이에 반해 CLIP은 추가로 데이터 학습이 필요하지 않으므로 zero-shot의 이점을 갖는다.
 
-![alt text](image-17.png)
+![alt text](/assets/images/image-17.png)
 
 ### CLIP 동작 과정 
 - 텍스트 인코더는 주어진 텍스트를 쪼개 토큰들을 만들고 토큰끼리 셀프 어텐션을 거친다. 셀프 어텐션은 “이 패치가 어떤 다른 패치들과 같이 등장하는지, 전체 컨텍스트에서 어떤 역할인지”를 학습하게 하며, 이 global 문맥 정보는 토큰 임베딩에 삽입된다.
@@ -32,7 +32,7 @@ When applying a ResNet model to other domains, a standard approach is to use a �
 
 참고로 일반적인 CLIP은 이미지 한 장과 문장 전체를 하나의 벡터로 만들어 비교하지만, 사진 속 DHN-NCE은 토큰 단위로 비교하는 local-to-local alignment 방식을 쓴다.
 
-![alt text](image-18.png)
+![alt text](/assets/images/image-18.png)
 
 더 나아가 MedCLIP-SAM은 CLIP으로 구한 토큰 간 유사도 행렬을 M2I에 넘겨 saliency map을 생성한다.
 
