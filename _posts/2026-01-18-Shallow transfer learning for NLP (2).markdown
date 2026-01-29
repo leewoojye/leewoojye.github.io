@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Shallow transfer learning for NLP (1)"
+title:  "Shallow transfer learning for NLP (2)"
 date:   2026-01-18 18:28:12 +0900
 comments: true
 categories: dev
