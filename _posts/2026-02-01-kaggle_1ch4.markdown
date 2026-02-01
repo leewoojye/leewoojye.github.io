@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "know-how from kaggle medalists : Quick, Draw! Doodle Recognition (2018)"
+title: "know-how from kaggle medalists 1 : Quick, Draw! Doodle Recognition (2018)"
 date: 2026-02-01 17:08:08 +0900
 comments: true
 categories: dev
@@ -25,3 +25,12 @@ tmi지만 고대 문자 아카드어를 영어로 번역하는 Deep Past Challen
 앙상블 및 스태킹 모델은 개별 모델이 상관도가 적을 때 높은 점수 이득을 얻을 수 있다고 하네요.
 
 과적합 방지를 위한 학습 데이터 셔플 : 예기치 못한 학습 중단 발생시 동일한 데이터로 여러 번 학습하게 되므로 매 학습마다 훈련 데이터 순서를 섞어줌
+
+### 가중 평균 앙상블 모델
+1D CNN 레이어가 추가된 가중 평균 앙상블 모델
+
+$N$개의 모델 예측값을 $x_1, x_2, \dots, x_n$이라 할 때, 1D CNN 레이어 1개(커널 크기 1, 편향 $b$)를 통과한 결과 $y$는 다음과 같습니다.
+
+$$y = \sigma \left( \sum_{i=1}^{n} (w_i \cdot x_i) + b \right)$$
+
+이는 수학적으로 Fully Connected Layer를 쓴 것과 동일합니다. 참고로 가중치에 해당하는 커널은 입력 채널만큼 있기 때문에 모델 4개에 대해 4개의 커널, 즉 가중치 4개가 생기게 됩니다.
